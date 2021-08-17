@@ -1,0 +1,37 @@
+<div class="container">
+<div class="col  col-md-6 offset-3 ">
+<form  [formGroup]="uploadFileForm" (ngSubmit)="onSubmit(uploadFileForm.value)">
+    <h2 class="text-center text-primary">
+        upload File 
+
+    </h2>
+
+      <div class="col col-md-12">
+        <label for="File">
+           Upload File
+        </label>
+        <input class="form-control"  type="file" formControlName="File" (change)="onSelectFile($event)" >
+    </div>
+    <br/>
+    <div class="col col-md-12">
+        <span class="alert alert-danger" *ngIf="uploadFileForm.get('File').hasError('required') && uploadFileForm.get('File').touched">
+            Pleases select file
+        </span>
+
+        <span class="alert alert-danger" *ngIf="!uploadFileForm.get('File').hasError('required')
+        && uploadFileForm.get('File').hasError('fileExtensionValidator')  ">
+          File extension is not recognized!
+      </span>
+    </div>
+    <br/>
+  <div class="col col-md-6">
+    <label for="btnFile">
+        &nbsp;
+     </label>
+    <button class="btn btn-success" id="btnFile" name="button" type="submit">Upload</button>
+</div>
+ 
+  </form>
+</div>
+</div>
+

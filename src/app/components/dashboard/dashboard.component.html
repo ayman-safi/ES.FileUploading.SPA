@@ -1,0 +1,29 @@
+<div class="row" *ngIf="pagination.itemsPerPage <pagination.totalItems">
+
+<div class="col-md-3"> 
+  <h3 class="text-center"> Main Navigator</h3>
+</div>
+<div class="col-md-3"> 
+  <pagination 
+      [boundaryLinks]="true"
+      [totalItems]="pagination.totalItems"
+      [(ngModel)]="pagination.currentPage"
+      [itemsPerPage]="pagination.itemsPerPage"
+      (pageChanged)="pageChanged($event)"
+      class="my-pagination" 
+    previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
+  </pagination>
+</div>
+</div>
+<hr/>
+<div class="container">
+
+
+<div class="row">
+<div class="col-6" *ngFor="let ex of Extensions">
+  <h5>File Type : {{ ex.extensionName.replace(".","") }}</h5>
+  <br/>
+  <app-view-files [extName]="ex.extensionName"></app-view-files>
+</div>
+</div>
+</div>
